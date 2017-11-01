@@ -244,9 +244,12 @@ class ValueElement(FrameManager):
             self.label.config(text=(self.title +": " + str(self.value)))
 
     def DataBaseMonitor(self):
-        DataBaseSize = os.popen("du -h DataBase | awk '{ print $1 }'").read().splitlines()
-        self.ChangeValue(DataBaseSize[0])
-        self.label.after(1000, self.DataBaseMonitor)
+        try:
+            DataBaseSize = os.popen("du -h DataBase | awk '{ print $1 }'").read().splitlines()
+            self.ChangeValue(DataBaseSize[0])
+            self.label.after(1000, self.DataBaseMonitor)
+        except Exception as e:
+            print("[EXCEPTION!!!] " + str(e))
 
 class TimenSettingsElement(FrameManager):
 
@@ -508,14 +511,14 @@ class SettingsButtons(FrameManager):
 
     def exit(self):
         source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        fullcommandForExit = source_dirname + '/Louncher.sh kill'
+        fullcommandForExit = source_dirname + '/Louncher.sh --kill'
         print(fullcommandForExit)
         # execute shell script
         os.system(fullcommandForExit)
 
     def resetDATABASE(event):
         source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        fullcommandForExit = source_dirname + '/Louncher.sh cleanup'
+        fullcommandForExit = source_dirname + '/Louncher.sh --button_resetdatabase'
         print(fullcommandForExit)
         # execute shell script
         os.system(fullcommandForExit)

@@ -1,0 +1,6 @@
+DataBase/*
+systemCache/*
+__pycache__
+moduls/__pycache__
+.DS_Store
+moduls/.DS_Store
