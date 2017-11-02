@@ -334,6 +334,11 @@ function CleanUP {
     local runtime="$3"
     local full="$4"
 
+    local restart_after_cleanup="$1"
+    if [ -z "$restart_after_cleanup" ]
+    then
+        restart_after_cleanup="true"
+    fi
     path_database=DataBase/
     path_systemcache=systemCache/
 
@@ -366,7 +371,6 @@ function CleanUP {
 
     if [ "$restart_after_cleanup" == "true" ]
     then
-        echo ""
         #Lounch_HcS
         UltraStabileRun &
     fi
