@@ -14,8 +14,8 @@ MY_NAME="`basename \"$0\"`"
 function init() {
     #__________________________!!!!!!!!!___________________________#
     ########################## SET THESE ###########################
-    known_args=("man" "debug" "run" "usrun" "kill" "monitor" "cleanup" "lmess" "button_resetdatabase" "resetruntime")                             # valid arg list - add new args - call with -- expl: --man
-    known_args_subs_pcs=(0 0 0 0 0 0 0 0 0 0)                                               # values for args - expl: --man -> 0, --example -> 1 etc.
+    known_args=("man" "debug" "run" "usrun" "kill" "monitor" "cleanup" "lmess" "button_resetdatabase" "resetruntime" "create_icon")                             # valid arg list - add new args - call with -- expl: --man
+    known_args_subs_pcs=(0 0 0 0 0 0 0 0 0 0 0)                                               # values for args - expl: --man -> 0, --example -> 1 etc.
     man_for_args=("--man\t\t::\tmanual"\                                        # add help text here
                   "--run\t\t::\tlounch HcSMeasurement application,  ${known_args_subs_pcs[2]} par"\
                   "--usrun\t\t::\tlounch HcSMeasurement application on safe mode(*), ${known_args_subs_pcs[3]} par"\
@@ -25,6 +25,7 @@ function init() {
                   "--lmess\t\t::\tshow realtime logs for HcS ${known_args_subs_pcs[7]} par"\
                   "--button_resetdatabase\t::\tgui button cmd for HcS ${known_args_subs_pcs[8]} par"\
                   "--resetruntime\t::\tgui button cmd for HcS ${known_args_subs_pcs[9]} par"\
+                  "--create_icon\t::\tcreate desktop icon for HcS ${known_args_subs_pcs[10]} par"\
                   "(*) usrun - ultra safe run - if any process dies automacly restart it.")
     #______________________________________________________________#
     ################################################################
@@ -444,6 +445,14 @@ function RunOption {
     if [ "$(get_arg_status "resetruntime")" -eq 1 ]
     then
             CleanUP "false" "false" "true" "false"
+    fi
+
+    if [ "$(get_arg_status "create_icon")" -eq 1 ]
+    then
+        command="#!/bin/bash\n${MY_PATH}/${MY_NAME} --usrun &"
+        echo -e "$command" > ~/Desktop/HcS_${MY_NAME}
+        chmod +x ~/Desktop/HcS_${MY_NAME}
+        echo -e "Louncher created on Desktop :)"
     fi
 }
 #--------------------------------------------------------------------------#

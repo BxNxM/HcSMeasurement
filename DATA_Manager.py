@@ -1,8 +1,10 @@
 from moduls.DATAlib import *
 import moduls.DATAlib as Dlib
 
+dataFileList=None
 
 def Refresh_dataBase():
+    global dataFileList
 
     '''
     Upload database here
@@ -27,7 +29,11 @@ def Refresh_dataBase():
 
         time.sleep(2)
 
+def main():
+    global dataFileList
+    # init data files objects from usage
+    dataFileList = Dlib.InitDataFiles()
+    Refresh_dataBase()
 
-# init data files objects from usage
-dataFileList = Dlib.InitDataFiles()
-Refresh_dataBase()
+if __name__ == "__main__":
+    main()

@@ -91,8 +91,10 @@ def UPDATE_UI():
 
     root.after(300, UPDATE_UI)
 
-if __name__ == "__main__":
-
+def main():
     init_GUI()
     UPDATE_UI()
     root.mainloop()
+
+if __name__ == "__main__":
+    main()

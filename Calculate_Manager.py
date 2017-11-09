@@ -78,6 +78,9 @@ def warningDetector(allStatus):
 
     return writeEnable, text
 
-if __name__ == "__main__":
+def main():
     init()
     run_calculations()
+
+if __name__ == "__main__":
+    main()

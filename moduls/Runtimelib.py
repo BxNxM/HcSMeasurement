@@ -60,10 +60,13 @@ def InitRunTimer():
     timer = RunTimerClass()
     return timer
 
-if __name__ == "__main__":
+def main():
     t = InitRunTimer()
     t.Runtimer()
     '''
     timeInstring = t.RuntimeWithFormat(mode="string")
     timeInDict = t.RuntimeWithFormat(mode="dict")
     '''
+
+if __name__ == "__main__":
+    main()
