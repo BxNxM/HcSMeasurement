@@ -1,3 +1,8 @@
+try:
+    import moduls.Loggerlib as Loggerlib
+except ImportError:
+    import Loggerlib
+
 generalValueMatrix = {   'PH' : { ('value'): 5.8, ('+/-'): 0.1, ('dim'): '-' },\
                          'EC' : { ('value'): 1.8, ('+/-'): 0.1, ('dim'): 'mS/cm' },\
                          'waterTemp' : { ('value'): 25, ('+/-'): 1, ('dim'): 'C' },\
@@ -33,11 +38,11 @@ def SensorValue_Checker(tag, sensorValue, week):
     differemnce = GetOptimalValue(tag, week) - sensorValue
 
     if bottom <= sensorValue <= top:
-        print("OK - tag: " + tag + " value: " + str(sensorValue) + " state: " + state + ", ragne: " + str(bottom) + " - " + str(top)\
+        Loggerlib.CalLog.logger.info("OK - tag: " + tag + " value: " + str(sensorValue) + " state: " + state + ", ragne: " + str(bottom) + " - " + str(top)\
               + " differnece: " + str(differemnce) + " week: " + str(week))
         return differemnce, isCritical
     else:
-        print("WARNING - tag: " + tag + " value: " + str(sensorValue) + " state: " + state + ", ragne: " + str(bottom) + " - " + str(top) \
+        Loggerlib.CalLog.logger.info("WARNING - tag: " + tag + " value: " + str(sensorValue) + " state: " + state + ", ragne: " + str(bottom) + " - " + str(top) \
               + " differnece: " + str(differemnce) + " week: " + str(week))
         isCritical = True
         return differemnce, isCritical
@@ -111,7 +116,7 @@ def GetDataBaseString():
         #print(">>>Weekly Data Settings:\n" + str(key) + "\t" + " <-> " + str(value))
         WeeklyDataString += str(key) + "\t" + " <-> " + str(value) + "\n"
 
-    print(universalDataString + "\n" + WeeklyDataString)
+    #print(universalDataString + "\n" + WeeklyDataString)
     return universalDataString + "\n" + WeeklyDataString
 
 if __name__ == "__main__":

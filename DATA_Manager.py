@@ -20,7 +20,7 @@ def Refresh_dataBase():
     '''
 
     while True:
-        print("TEST DATAs IS GENERATING")
+        #print("TEST DATAs IS GENERATING")
         for i in range(0, len(dataFileList) - 1):
             try:
                 dataFileList[i].AddData_WithTimestamp(float(dataFileList[i].ReadData_ToDict(1)[0, 'value']) + randint(-1, 1)/10)

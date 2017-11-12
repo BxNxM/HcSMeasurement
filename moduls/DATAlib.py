@@ -3,6 +3,10 @@
 import os
 import time, datetime
 from random import randint
+try:
+    import moduls.Loggerlib as Loggerlib
+except ImportError:
+    import Loggerlib
 
 # get source path parent's folder parent's folder
 source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +32,7 @@ class FileHandling():
             self.content = ""
             self.isEnable = True
         else:
-            print(path + " IS NOT EXIST!")
+            Loggerlib.DataLog.logger.critical(path + " IS NOT EXIST!")
             self.isEnable = False
             #TODO make the file.... -> self.isEnable = Frue
             self.CreateFile(path)
@@ -36,7 +40,7 @@ class FileHandling():
 
     def CreateFile(self, path):
         with open(path, 'w+') as newfile:
-            print("Create path: " + str(path) + str(newfile))
+            Loggerlib.DataLog.logger.info("Create path: " + str(path) + str(newfile))
             return True
 
     def ReadFile(self, lastx=None):
@@ -65,7 +69,7 @@ class FileHandling():
             return False
 
     def GetFilePath(self):
-        print(self.path)
+        #print(self.path)
         return self.path
 
 class DataManager(FileHandling):
@@ -85,7 +89,7 @@ class DataManager(FileHandling):
         if self.isEnable == True:
             for data in stack:
                 self.AddData_WithTimestamp(data, mode)
-            print(str(stack) + " added successfully mode: " + str(mode))
+            Loggerlib.DataLog.logger.info(str(stack) + " added successfully mode: " + str(mode))
 
     def ReadData_ToDict(self, lastX=None):
         if self.isEnable == True:

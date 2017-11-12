@@ -5,6 +5,10 @@ except ImportError:
 
 import os
 import time
+try:
+    import moduls.Loggerlib as Loggerlib
+except ImportError:
+    import Loggerlib
 
 class RunTimerClass():
 
@@ -24,7 +28,7 @@ class RunTimerClass():
             lastTime += refreshTime
             self.timefile.WriteFile(str(lastTime), mode='w')
 
-            print("Refresh runtime counter: " + str(lastTime) + " sec")
+            Loggerlib.RuntimeLog.logger.info("Refresh runtime counter: " + str(lastTime) + " sec")
 
             time.sleep(refreshTime)
 
@@ -39,7 +43,7 @@ class RunTimerClass():
             week = int(timeInSec / 60 / 60 / 24 / 7)
 
             fullTime = str(week) + "w:" + str(day) + "d:" + str(hour) + "h:" + str(minute) + "m:" + str(sec) + "s"
-            print(fullTime)
+            #print(fullTime)
 
             if mode == "string":
                 return fullTime
@@ -49,12 +53,12 @@ class RunTimerClass():
                 return timeList
 
         except ValueError:
-            print("!!!Read error from RuntimeWithFormat()")
+            Loggerlib.RuntimeLog.logger.critical("!!!Read error from RuntimeWithFormat()")
             return self.RuntimeWithFormat(mode=mode)
 
     def ResetTimer(self):
         self.timefile.WriteFile("0", mode='w')
-        print("Runtime was reset to 0")
+        Loggerlib.RuntimeLog.logger.info("Runtime was reset to 0")
 
 def InitRunTimer():
     timer = RunTimerClass()

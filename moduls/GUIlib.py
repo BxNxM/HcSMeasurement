@@ -10,7 +10,10 @@ import moduls.CALCULATElib as Cal
 from Calculate_Manager import *
 import moduls.Runtimelib as rtime
 runtime = rtime.InitRunTimer()
-
+try:
+    import moduls.Loggerlib as Loggerlib
+except ImportError:
+    import Loggerlib
 
 '''
 Elemets by id
@@ -65,7 +68,7 @@ class GeometryInfo():
             GeometryInfo.mainWindowSizeDict['height'] = 480
             GeometryInfo.mainWindowSizeDict['width'] = 800
 
-        print("GeometryInfo.mainWindowSizeDict['width']:" + str(GeometryInfo.mainWindowSizeDict['width']) + \
+        Loggerlib.GuiLog.logger.info("GeometryInfo.mainWindowSizeDict['width']:" + str(GeometryInfo.mainWindowSizeDict['width']) + \
               " GeometryInfo.mainWindowSizeDict['height']:"+ str(GeometryInfo.mainWindowSizeDict['height']))
 
     def ElemetPlaceBYID(id):
@@ -76,25 +79,25 @@ class GeometryInfo():
             dict_places['height'] = GeometryInfo.mainWindowSizeDict['height'] / 6
             dict_places['width'] = GeometryInfo.mainWindowSizeDict['width'] / 4
         else:
-            print("INIT GeometryInfo.windowSize(obj) BEFORE USEAGE!")
+            Loggerlib.GuiLog.logger.error("INIT GeometryInfo.windowSize(obj) BEFORE USEAGE!")
             return None
 
         if id < 4 and id >=0:
             #first line (0,0 0,1 0,2 0,3)
             dict_places['offsetX'] = dict_places['width'] * id
             dict_places['offsetY'] =  dict_places['height'] * 0
-            print("element id: "+ str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id: "+ str(id) + " " + str(dict_places))
 
         elif id >= 4 and id <=7:
             #second line (1,0 1,1 1,2 1,3)
             dict_places['offsetX'] = dict_places['width'] * (id-4)
             dict_places['offsetY'] = dict_places['height'] * 1
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         elif id == 8 or id == 9:
             dict_places['offsetX'] = dict_places['width'] * (id-8)
             dict_places['offsetY'] = dict_places['height'] * 2
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         elif id == 10:
             dict_places['offsetX'] = dict_places['width'] * 0
@@ -102,7 +105,7 @@ class GeometryInfo():
             #overcalculate element width height for plotting view
             dict_places['width'] = dict_places['width'] * 2
             dict_places['height'] = dict_places['height'] * 3
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         elif id == 11:
             dict_places['offsetX'] = dict_places['width'] * 2
@@ -110,27 +113,27 @@ class GeometryInfo():
             # overcalculate element width height for plotting view
             dict_places['width'] = dict_places['width'] * 2
             dict_places['height'] = dict_places['height'] * 4
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         elif id == 12:
             dict_places['offsetX'] = 0
             dict_places['offsetY'] = 0
             dict_places['width'] = dict_places['width']
             dict_places['height'] = dict_places['height'] * 6
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         elif id == 13:
             dict_places['offsetX'] = dict_places['width'] * 1
             dict_places['offsetY'] = 0
             dict_places['width'] = dict_places['width'] * 3
             dict_places['height'] = dict_places['height'] * 6
-            print("element id:" + str(id) + " " + str(dict_places))
+            Loggerlib.GuiLog.logger.info("element id:" + str(id) + " " + str(dict_places))
 
         else:
-            print("ElementID error " + id + " not defined!")
+            Loggerlib.GuiLog.logger.critical("ElementID error " + id + " not defined!")
             dict_places['offsetX'] = 0
             dict_places['offsetY'] = 0
-            print("WORNING! element id:" + str(dict_places))
+            Loggerlib.GuiLog.logger.critical("WORNING! element id:" + str(dict_places))
 
         return dict_places
 
@@ -161,7 +164,7 @@ class FrameManager(tk.Frame):
         FrameInfo_dict['width'] = self.width
         FrameInfo_dict['offsetX'] = self.offsetX
         FrameInfo_dict['offsetY'] = self.offsetY
-        print(FrameInfo_dict)
+        Loggerlib.GuiLog.logger.info(FrameInfo_dict)
         return FrameInfo_dict
 
 #------------------------ VALUE ELEMENT OBJECT ON FRAME -----------------------------#
@@ -198,14 +201,14 @@ class ValueElement(FrameManager):
 
     def PressedElement(self, event):
         #self.configure(background = 'white')
-        print("ElementPressed on: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
+        Loggerlib.GuiLog.logger.info("ElementPressed on: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
         #call console element to write out for debug
         global debugMode
         if debugMode:
             try:
                 UI_Functions.elementList_mainUI[11].WriteToConsole("element pressed id: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
             except ValueError:
-                print("UI_Functions.elementList_mainUI[11] was not inited (ConsoleElement)")
+                Loggerlib.GuiLog.logger.critical("UI_Functions.elementList_mainUI[11] was not inited (ConsoleElement)")
         #TODO functions here
         self.TogglePlottingVisibility()
         self.VisibleClick()
@@ -226,11 +229,11 @@ class ValueElement(FrameManager):
 
         if PlotIsVisible[self.ID] == True:
             PlotIsVisible[self.ID] = False
-            print("Toggle plots to element id:" + str(self.ID) + " OFF ")
+            Loggerlib.GuiLog.logger.info("Toggle plots to element id:" + str(self.ID) + " OFF ")
             UI_Functions.elementList_mainUI[11].WriteToConsole("Toggle plots to element id:" + str(self.ID) + " OFF" )
         else:
             PlotIsVisible[self.ID] = True
-            print("Toggle plots to element id:" + str(self.ID) + " ON ")
+            Loggerlib.GuiLog.logger.info("Toggle plots to element id:" + str(self.ID) + " ON ")
             UI_Functions.elementList_mainUI[11].WriteToConsole("Toggle plots to element id:" + str(self.ID) + " ON" )
 
 
@@ -249,7 +252,7 @@ class ValueElement(FrameManager):
             self.ChangeValue(DataBaseSize[0])
             self.label.after(1000, self.DataBaseMonitor)
         except Exception as e:
-            print("[EXCEPTION!!!] " + str(e))
+            Loggerlib.GuiLog.logger.critical("[EXCEPTION!!!] " + str(e))
 
 class TimenSettingsElement(FrameManager):
 
@@ -284,29 +287,29 @@ class TimenSettingsElement(FrameManager):
         self.label.config(text=str(self.value))
 
     def PressedElement(self, event):
-        print("ElementPressed on: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
+        Loggerlib.GuiLog.logger.info("ElementPressed on: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
         global debugMode
         if debugMode:
             try:
                 UI_Functions.elementList_mainUI[11].WriteToConsole("element pressed id: " + str(self.ID) + " - " + elementTexts[self.ID, 'title'])
             except ValueError:
-                print("UI_Functions.elementList_mainUI[11] was not inited (ConsoleElement)")
+                Loggerlib.GuiLog.logger.critical("UI_Functions.elementList_mainUI[11] was not inited (ConsoleElement)")
 
         if self.ID == 8:
             global PlotIsVisible
             if self.toggleAllPlots:
-                print("Turn all plots visible!")
+                Loggerlib.GuiLog.logger.info("Turn all plots visible!")
                 UI_Functions.elementList_mainUI[11].WriteToConsole("Turn all plots visible!")
                 PlotIsVisible = [True, True, True, True, True, True, True, True]
                 self.toggleAllPlots = False
             else:
-                print("Turn all plots unvisible!")
+                Loggerlib.GuiLog.logger.info("Turn all plots unvisible!")
                 UI_Functions.elementList_mainUI[11].WriteToConsole("Turn all plots unvisible!")
                 PlotIsVisible = [False, False, False, False, False, False, False, False]
                 self.toggleAllPlots = True
 
         if self.ID == 9:
-            print("Toggle MainWindow and Settings window")
+            Loggerlib.GuiLog.logger.info("Toggle MainWindow and Settings window")
             # switch visibility flags for frames
             FrameSwitcher.SwitchFrame()
 
@@ -471,7 +474,7 @@ class ConsoleElement(FrameManager):
 
             if formated_quote != self.prompt:
                 self.textBox.insert(END, formated_quote + "\n")
-                print("Notify status: " + str(ConsoleElement.notifyIsEnable))
+                Loggerlib.GuiLog.logger.info("Notify status: " + str(ConsoleElement.notifyIsEnable))
 
             # autoscroll
             self.textBox.yview('end')
@@ -512,14 +515,14 @@ class SettingsButtons(FrameManager):
     def exit(self):
         source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         fullcommandForExit = source_dirname + '/Louncher.sh --kill'
-        print(fullcommandForExit)
+        Loggerlib.GuiLog.logger.info(fullcommandForExit)
         # execute shell script
         os.system(fullcommandForExit)
 
     def resetDATABASE(event):
         source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         fullcommandForExit = source_dirname + '/Louncher.sh --button_resetdatabase'
-        print(fullcommandForExit)
+        Loggerlib.GuiLog.logger.info(fullcommandForExit)
         # execute shell script
         os.system(fullcommandForExit)
 
@@ -658,7 +661,7 @@ class UI_Functions():
         UI_Functions.elementList_mainUI[id].Set_n_Draw(GeometryInfo.ElemetPlaceBYID(id)['offsetX'], GeometryInfo.ElemetPlaceBYID(id)['offsetY'])
         UI_Functions.elementList_mainUI[id].WriteToConsole(">>> WELCOME HcS MEASUREMENT <<<\n")
 
-        print("mainUI inited successfully")
+        Loggerlib.GuiLog.logger.info("mainUI inited successfully")
         return UI_Functions.elementList_mainUI
 
     @staticmethod

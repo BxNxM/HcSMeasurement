@@ -6,6 +6,7 @@ from moduls.DATAlib import *
 import  moduls.DATAlib as Dlib
 from moduls.FilePipelib import *
 import moduls.FilePipelib as fPipe
+import moduls.Loggerlib
 
 # init global variables for this file
 dataFileList = 0
@@ -35,7 +36,7 @@ def init_GUI():
     #============================= MAIN WINDOW ELEMENTS ===============================#
     # make mainWindow elements in frame
     framesOnmainWindow = UI_Functions.mainUI(mainFrameWindow)
-    print("frames in mainwindow:\n" + str(framesOnmainWindow))
+    Loggerlib.GuiLog.logger.info("frames in mainwindow:\n" + str(framesOnmainWindow))
 
     #================================= SETTINGS WINDOW ================================#
     #make settings window frame
@@ -43,7 +44,7 @@ def init_GUI():
                                           width=GeometryInfo.mainWindowSizeDict['width'], \
                                           bd=1, relief=FLAT, background="dim grey")
     framesOnsettingsWindow = UI_Functions.settingsUI(settingsFrameWindow)
-    print("frames in settingswindow:\n" + str(framesOnsettingsWindow))
+    Loggerlib.GuiLog.logger.info("frames in settingswindow:\n" + str(framesOnsettingsWindow))
 
     #================================ FRAMES SWITCHER ================================#
     #init frames interface to switch it easily (main frame and settings frame)
@@ -63,7 +64,7 @@ def UPDATE_UI():
 
     global dataFileList, framesOnmainWindow, frSwitcher, pipe, root
 
-    print("<<< UPDATE UI >>>")
+    Loggerlib.GuiLog.logger.info("<<< UPDATE UI >>>")
     # single value elements
     for i in range(0, len(dataFileList)-1):
         try:
@@ -80,7 +81,7 @@ def UPDATE_UI():
 
         except KeyError:
             errorMessage = "There are no input data (KeyError)! -> " + str(dataFileList[i])
-            print(errorMessage)
+            Loggerlib.GuiLog.logger.critical(errorMessage)
             pipe.WritePipe(errorMessage)
 
     # switch frames by stored visibility list

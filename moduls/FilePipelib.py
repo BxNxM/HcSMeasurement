@@ -1,4 +1,8 @@
 import os
+try:
+    import moduls.Loggerlib as Loggerlib
+except ImportError:
+    import Loggerlib
 
 # get source path parent's folder parent's folder
 source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
