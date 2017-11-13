@@ -451,7 +451,7 @@ function RunOption {
             echo -e "$runState" > $RunStateFile
             Lounch_HcS
         else
-            echo -e "HcSMeasure already running\n./Louncher.sh (or echo -e 'false' > $RunStateFile)"
+            echo -e "HcSMeasure already running\nRestart or reset state!\n./Louncher.sh --kill (or echo -e 'false' > $RunStateFile)"
         fi
     fi
 
@@ -466,7 +466,7 @@ function RunOption {
             echo -e "$runState" > $RunStateFile
             UltraStabileRun &
         else
-            echo -e "HcSMeasure already running.\nRestart or reset state!\n./Louncher.sh (or echo -e 'false' > $RunStateFile)"
+            echo -e "HcSMeasure already running.\nRestart or reset state!\n./Louncher.sh --kill (or echo -e 'false' > $RunStateFile)"
         fi
     fi
 
