@@ -1,0 +1,79 @@
+{
+  "week1": {
+    "EC": 1.4,
+    "dim": "ml",
+    "hydroA": 10,
+    "hydroB": 10,
+    "state": "grow"
+  },
+  "week10": {
+    "EC": 2.2,
+    "dim": "ml",
+    "hydroA": 16,
+    "hydroB": 16,
+    "state": "bloom"
+  },
+  "week11": {
+    "EC": "",
+    "dim": "ml",
+    "hydroA": 0,
+    "hydroB": 0,
+    "state": "harvest"
+  },
+  "week2": {
+    "EC": 1.4,
+    "dim": "ml",
+    "hydroA": 10,
+    "hydroB": 10,
+    "state": "grow"
+  },
+  "week3": {
+    "EC": 1.5,
+    "dim": "ml",
+    "hydroA": 12,
+    "hydroB": 12,
+    "state": "bloom"
+  },
+  "week4": {
+    "EC": 1.7,
+    "dim": "ml",
+    "hydroA": 14,
+    "hydroB": 14,
+    "state": "bloom"
+  },
+  "week5": {
+    "EC": 1.9,
+    "dim": "ml",
+    "hydroA": 16,
+    "hydroB": 16,
+    "state": "bloom"
+  },
+  "week6": {
+    "EC": 2.1,
+    "dim": "ml",
+    "hydroA": 14,
+    "hydroB": 14,
+    "state": "bloom"
+  },
+  "week7": {
+    "EC": 2.2,
+    "dim": "ml",
+    "hydroA": 16,
+    "hydroB": 16,
+    "state": "bloom"
+  },
+  "week8": {
+    "EC": 2.2,
+    "dim": "ml",
+    "hydroA": 16,
+    "hydroB": 16,
+    "state": "bloom"
+  },
+  "week9": {
+    "EC": 2.2,
+    "dim": "ml",
+    "hydroA": 16,
+    "hydroB": 16,
+    "state": "bloom"
+  }
+}

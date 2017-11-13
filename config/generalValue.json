@@ -1,0 +1,45 @@
+{
+  "EC": {
+    "+/-": 0.1,
+    "dim": "mS/cm",
+    "value": 1.8
+  },
+  "PH": {
+    "+/-": 0.1,
+    "dim": "-",
+    "value": 5.8
+  },
+  "PH+": {
+    "dim": "ml",
+    "value": 5
+  },
+  "PH-": {
+    "dim": "ml",
+    "value": 5
+  },
+  "airTemp": {
+    "+/-": 1,
+    "dim": "C",
+    "value": 25
+  },
+  "hum": {
+    "+/-": 1,
+    "dim": "%",
+    "value": 20
+  },
+  "light": {
+    "+/-": 10,
+    "dim": "lm",
+    "value": 600
+  },
+  "waterTemp": {
+    "+/-": 1,
+    "dim": "C",
+    "value": 25
+  },
+  "waterlvl": {
+    "+/-": 2,
+    "dim": "cm",
+    "value": 20
+  }
+}

@@ -9,32 +9,12 @@ try:
     myfolder = os.path.dirname(os.path.abspath(__file__))
     sys.path.append(myfolder)
     import Loggerlib as Loggerlib
+    import Configlib
 except Exception as e:
     print("IMPORT EXCEPTION!!!" + str(__name__) + "\n" + str(e))
 
-generalValueMatrix = {   'PH' : { ('value'): 5.8, ('+/-'): 0.1, ('dim'): '-' },\
-                         'EC' : { ('value'): 1.8, ('+/-'): 0.1, ('dim'): 'mS/cm' },\
-                         'waterTemp' : { ('value'): 25, ('+/-'): 1, ('dim'): 'C' },\
-                         'airTemp' : { ('value'): 25, ('+/-'): 1, ('dim'): 'C' },\
-                         'light' : { ('value'): 600, ('+/-'): 10, ('dim'): 'lm' },\
-                         'hum' : { ('value'): 20, ('+/-'): 1, ('dim'): '%' },\
-                         'waterlvl' : { ('value'): 20, ('+/-'): 2, ('dim'): 'cm'}, \
-                         'PH+': {('value'): 5, ('dim'): 'ml'}, \
-                         'PH-': {('value'): 5, ('dim'): 'ml'}
-}
-
-nutritionValuesMatrix = {'week1' : { ('hydroA'): 10, ('hydroB'): 10, ('EC'): 1.4, ('state'): 'grow' ,('dim'): 'ml' },\
-                         'week2' : { ('hydroA'): 10, ('hydroB'): 10, ('EC'): 1.4, ('state'): 'grow' ,('dim'): 'ml' },\
-                         'week3' : { ('hydroA'): 12, ('hydroB'): 12, ('EC'): 1.5, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week4': { ('hydroA'): 14, ('hydroB'): 14, ('EC'): 1.7, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week5': { ('hydroA'): 16, ('hydroB'): 16, ('EC'): 1.9, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week6': { ('hydroA'): 14, ('hydroB'): 14, ('EC'): 2.1, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week7': { ('hydroA'): 16, ('hydroB'): 16, ('EC'): 2.2, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week8': { ('hydroA'): 16, ('hydroB'): 16, ('EC'): 2.2, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week9': { ('hydroA'): 16, ('hydroB'): 16, ('EC'): 2.2, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week10': { ('hydroA'): 16, ('hydroB'): 16, ('EC'): 2.2, ('state'): 'bloom' ,('dim'): 'ml' }, \
-                         'week11': { ('hydroA'): 0, ('hydroB'): 0, ('EC'): '', ('state'): 'harvest' ,('dim'): 'ml' },\
-}
+generalValueMatrix = Configlib.nutritionValuesMatrix_obj.get_all()
+nutritionValuesMatrix = Configlib.generalValueMatrix_obj.get_all()
 
 def SensorValue_Checker(tag, sensorValue, week):
 
