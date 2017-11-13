@@ -7,8 +7,9 @@ args_pcs=$#
 arg_list=($@)
 
 # script path n name
+SOURCEPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SOURCE_NAME="`basename \"$0\"`"
 MY_PATH="`dirname \"$0\"`"
-MY_NAME="`basename \"$0\"`"
 
 # ------------------- SET ARG PARSER ----------------#
 function init() {
@@ -392,7 +393,7 @@ function RunOption {
     argParseRun
     if [ "$args_pcs" -eq 0 ]
     then
-        echo -e "No input argument! for more info use: ${MY_PATH}/${MY_NAME} --man"
+        echo -e "No input argument! for more info use: ${SOURCEPATH}/${SOURCE_NAME} --man"
     fi
 
     # check arg was called
@@ -449,9 +450,9 @@ function RunOption {
 
     if [ "$(get_arg_status "create_icon")" -eq 1 ]
     then
-        command="#!/bin/bash\n${MY_PATH}/${MY_NAME} --usrun &"
-        echo -e "$command" > ~/Desktop/HcS_${MY_NAME}
-        chmod +x ~/Desktop/HcS_${MY_NAME}
+        command="#!/bin/bash\n${SOURCEPATH}/${SOURCE_NAME} --usrun &"
+        echo -e "$command" > ~/Desktop/HcS_${SOURCE_NAME}
+        chmod +x ~/Desktop/HcS_${SOURCE_NAME}
         echo -e "Louncher created on Desktop :)"
     fi
 }
