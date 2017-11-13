@@ -443,17 +443,31 @@ function RunOption {
     # check arg was called
     if [ "$(get_arg_status "run")" -eq 1 ]
     then
-        runState="true"
-        echo -e "$runState" > $RunStateFile
-        Lounch_HcS
+        Simple_fileReader $RunStateFile
+        local rState=${search_line[0]}
+        if [ "$rState" != "true" ]
+        then
+            runState="true"
+            echo -e "$runState" > $RunStateFile
+            Lounch_HcS
+        else
+            echo -e "HcSMeasure already running\n./Louncher.sh (or echo -e 'false' > $RunStateFile)"
+        fi
     fi
 
     # check arg was called
     if [ "$(get_arg_status "usrun")" -eq 1 ]
     then
+        Simple_fileReader $RunStateFile
+        local rState=${search_line[0]}
+        if [ "$rState" != "true" ]
+        then
             runState="true"
             echo -e "$runState" > $RunStateFile
             UltraStabileRun &
+        else
+            echo -e "HcSMeasure already running.\nRestart or reset state!\n./Louncher.sh (or echo -e 'false' > $RunStateFile)"
+        fi
     fi
 
     # check arg was called
