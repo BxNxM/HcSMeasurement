@@ -1,7 +1,14 @@
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 try:
-    import moduls.Loggerlib as Loggerlib
-except ImportError:
-    import Loggerlib
+    # IMPORT MODULS
+    # default moduls
+    import sys
+    # custom moduls
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(myfolder)
+    import Loggerlib as Loggerlib
+except Exception as e:
+    print("IMPORT EXCEPTION!!!" + str(e))
 
 generalValueMatrix = {   'PH' : { ('value'): 5.8, ('+/-'): 0.1, ('dim'): '-' },\
                          'EC' : { ('value'): 1.8, ('+/-'): 0.1, ('dim'): 'mS/cm' },\

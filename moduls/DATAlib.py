@@ -1,17 +1,21 @@
-#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
-
-import os
-import time, datetime
-from random import randint
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3q
 try:
-    import moduls.Loggerlib as Loggerlib
-except ImportError:
+    # IMPORT MODULS
+    # default moduls
+    import os
+    import time, datetime
+    from random import randint
+    import sys
+    # custom moduls
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(myfolder)
     import Loggerlib
+except Exception as e:
+    print("IMPORT EXCEPTION!!! " + str(e))
 
 # get source path parent's folder parent's folder
 source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 prePath = source_dirname + '/DataBase/'
-#prePath = '/Users/BanMarcell/PycharmProjects/HcSMeasurement/DataBase/'
 fileExtension = '.txt'
 sensorsFilePath = [prePath + 'Watertemp' + fileExtension, \
                    prePath + 'Airtemp' + fileExtension, \

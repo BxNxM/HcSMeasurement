@@ -1,6 +1,14 @@
-import logging
-import os
-myfolder = os.path.dirname(os.path.abspath(__file__))
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
+try:
+    # IMPORT MODULS
+    # default moduls
+    import logging
+    import os
+    import sys
+    # custom moduls
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+except Exception as e:
+    print("IMPORT EXCEPTION!!! " + str(e))
 
 class LogHandler():
     __instance = None

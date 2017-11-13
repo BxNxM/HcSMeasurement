@@ -1,19 +1,24 @@
-#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
-
-# IMPORT LIBRARY
-from tkinter import *
-import tkinter as tk
-import time
-import os
-from random import randint
-import moduls.CALCULATElib as Cal
-from Calculate_Manager import *
-import moduls.Runtimelib as rtime
-runtime = rtime.InitRunTimer()
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 try:
-    import moduls.Loggerlib as Loggerlib
-except ImportError:
-    import Loggerlib
+    # IMPORT MODULS
+    # default moduls
+    import sys
+    import time
+    import os
+    from tkinter import *
+    import tkinter as tk
+    from random import randint
+    # custom modules
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(myfolder)
+    import CALCULATElib as Cal
+    import Runtimelib as rtime
+    runtime = rtime.InitRunTimer()
+    import Loggerlib as Loggerlib
+    sys.path.append(myfolder + "/..")
+    from Calculate_Manager import *
+except Exception as e:
+    print("IMPORT EXCEPTON!!!" + str(e))
 
 '''
 Elemets by id

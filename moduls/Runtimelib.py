@@ -1,14 +1,17 @@
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 try:
-    import moduls.DATAlib as dlib
-except ImportError:
+    # IMPORT MODULS
+    # default moduls
+    import os
+    import time
+    import sys
+    # custom moduls
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(myfolder)
     import DATAlib as dlib
-
-import os
-import time
-try:
-    import moduls.Loggerlib as Loggerlib
-except ImportError:
-    import Loggerlib
+    import Loggerlib as Loggerlib
+except Exception as e:
+    print("IMPORT EXCEPTION!!! " + str(e))
 
 class RunTimerClass():
 

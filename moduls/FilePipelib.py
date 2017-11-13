@@ -1,12 +1,18 @@
-import os
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 try:
-    import moduls.Loggerlib as Loggerlib
-except ImportError:
-    import Loggerlib
-
-# get source path parent's folder parent's folder
-source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-pipePath = source_dirname + '/DataBase/ConsolePipe'
+    # IMPORT MODULES
+    # default moduls
+    import os
+    import sys
+    # custom moduls
+    myfolder = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(myfolder)
+    import Loggerlib as Loggerlib
+    # get source path parent's folder parent's folder
+    source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pipePath = source_dirname + '/DataBase/ConsolePipe'
+except Exception as w:
+    print("IMPORT EXCEPTION!!! " + str(e))
 
 class FilePipe():
     """ This is a simple communications between running python programs """
