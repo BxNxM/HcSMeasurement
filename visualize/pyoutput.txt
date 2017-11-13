@@ -1,0 +1,196 @@
+--------------------------------------------------------------------------------
+LAYER	0	/Users/bnm/PycharmProjects/HcSMeasurement//DATA_Manager.py
+--------------------------------------------------------------------------------
+from moduls.DATAlib import *
+import moduls.DATAlib as Dlib
+def Refresh_dataBase():
+def main():
+--------------------------------------------------------------------------------
+LAYER	0	/Users/bnm/PycharmProjects/HcSMeasurement//Calculate_Manager.py
+--------------------------------------------------------------------------------
+from moduls.DATAlib import *
+import  moduls.DATAlib as Dlib
+from moduls.FilePipelib import *
+import moduls.FilePipelib as fPipe
+import moduls.CALCULATElib as Clib
+from moduls.CALCULATElib import *
+import moduls.Runtimelib as rtime
+def init():
+def run_calculations():
+def warningDetector(allStatus):
+def main():
+--------------------------------------------------------------------------------
+LAYER	0	/Users/bnm/PycharmProjects/HcSMeasurement//GUI_Manager.py
+--------------------------------------------------------------------------------
+import sys
+import os
+from GUIlib import *
+import GUIlib as GUIlib
+from DATAlib import *
+import  DATAlib as Dlib
+from FilePipelib import *
+import FilePipelib as fPipe
+import Loggerlib
+def init_GUI():
+def UPDATE_UI():
+def main():
+--------------------------------------------------------------------------------
+LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/Calculate_Manager_visualizer.py
+--------------------------------------------------------------------------------
+import sys
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+    import Calculate_Manager
+--------------------------------------------------------------------------------
+LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/GUI_Manager_visualizer.py
+--------------------------------------------------------------------------------
+import sys
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+    import GUI_Manager
+--------------------------------------------------------------------------------
+LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/DATA_Manager_visualizer.py
+--------------------------------------------------------------------------------
+import sys
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+    import DATA_Manager
+--------------------------------------------------------------------------------
+LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/Runtime_Manager_visualizer.py
+--------------------------------------------------------------------------------
+import sys
+from pycallgraph import PyCallGraph
+from pycallgraph.output import GraphvizOutput
+    import Runtimelib
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/FilePipelib.py
+--------------------------------------------------------------------------------
+    import os
+    import sys
+    import Loggerlib as Loggerlib
+class FilePipe():
+    def __init__(self, path):
+    def ReadPipe(self):
+    def WritePipe(self, message):
+def InitPipe():
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/Runtimelib.py
+--------------------------------------------------------------------------------
+    import os
+    import time
+    import sys
+    import DATAlib as dlib
+    import Loggerlib as Loggerlib
+class RunTimerClass():
+    def __init__(self):
+    def Runtimer(self):
+    def RuntimeWithFormat(self, mode="string"):
+    def ResetTimer(self):
+def InitRunTimer():
+def main():
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/Loggerlib.py
+--------------------------------------------------------------------------------
+    import logging
+    import os
+    import sys
+class LogHandler():
+    def __new__(cls, title="title", logpath="logfile.log", log_limit_Mb=300):
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/DATAlib.py
+--------------------------------------------------------------------------------
+    import os
+    import time, datetime
+    from random import randint
+    import sys
+    import Loggerlib
+class FileHandling():
+    def __init__(self, path):
+    def CreateFile(self, path):
+    def ReadFile(self, lastx=None):
+    def WriteFile(self, data, mode='a'):                #default mode is append 'a', but 'w' for rewrite file
+    def GetFilePath(self):
+class DataManager(FileHandling):
+    def __init__(self, path):
+    def AddData_WithTimestamp(self, data, mode = 'a'):
+    def AddList_WithTimestamp(self, *stack, mode = 'a'):
+    def ReadData_ToDict(self, lastX=None):
+    def GetDictLenght(self):
+    def TimeStamp(self):
+def InitDataFiles():
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/GUIlib.py
+--------------------------------------------------------------------------------
+    import sys
+    import time
+    import os
+    from tkinter import *
+    import tkinter as tk
+    from random import randint
+    import CALCULATElib as Cal
+    import Runtimelib as rtime
+    import Loggerlib as Loggerlib
+    from Calculate_Manager import *
+class GeometryInfo():
+    def windowSize(obj):
+    def ElemetPlaceBYID(id):
+class FrameManager(tk.Frame):
+    """ this is a custom basic frame class """
+    def __init__(self, motherObj, *args, **kwargs):          # constuctor
+    def GetObjectSizes(self, **kwargs):
+    def Set_n_Draw(self, offsX_=0, offsY_=0):
+    def GetFrameInfo(self):
+class ValueElement(FrameManager):
+    def __init__(self, motherObj, ID, *args, **kwargs):
+    def PressedElement(self, event):
+    def VisibleClick(self):
+    def TogglePlottingVisibility(self):
+    def ChangeValue(self, value):
+    def DataBaseMonitor(self):
+class TimenSettingsElement(FrameManager):
+    def __init__(self, motherObj, ID, *args, **kwargs):
+    def ChangeValue(self, value):
+    def PressedElement(self, event):
+    def VisibleClick(self):
+    def ActivateClock(self):
+class PlottingElement(FrameManager):
+    def __init__(self, motherObj, ID, *args, **kwargs):
+    def CanvasGrid(self):
+    def makePlotInPixel(self, *dataList, id):
+class ConsoleElement(FrameManager):
+    def __init__(self, motherObj, ID, *args, **kwargs):
+    def WriteToConsole(self, quote):
+class SettingsButtons(FrameManager):
+    def __init__(self, motherObj, *args, **kwargs):
+    def run_Runtime(self):
+    def back(event):
+    def exit(self):
+    def resetDATABASE(event):
+    def resetRUNTIME(event):
+    def notify(self):
+class SettingsDataDisplay(FrameManager):
+    def __init__(self, motherObj, *args, **kwargs):
+    def WriteToConsole(self, quote):
+class FrameSwitcher():
+    def __init__(self, frame1, frame2):
+    def SwitchManager(self):
+    def SwitchFrame():
+class UI_Functions():
+    def mainUI(motherObj):
+    def settingsUI(motherObj):
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/CALCULATElib.py
+--------------------------------------------------------------------------------
+    import sys
+    import os
+    import Loggerlib as Loggerlib
+def SensorValue_Checker(tag, sensorValue, week):
+def CalculateByTag(tag, week, mode):
+def GetOptimalValue(tag, week):
+def RunValueChacker(week, mPH, mEC, mwTemp, maTemp, mlight, mhum, mwaterlvl):
+def WeeklyProcess(week):
+def GetDataBaseString():
+
+Generated lines: 192 pcs
+Analized files: 13 pcs
+Project forders: 3 pcs
