@@ -13,8 +13,8 @@ try:
 except Exception as e:
     print("IMPORT EXCEPTION!!!" + str(__name__) + "\n" + str(e))
 
-generalValueMatrix = Configlib.nutritionValuesMatrix_obj.get_all()
-nutritionValuesMatrix = Configlib.generalValueMatrix_obj.get_all()
+generalValueMatrix = Configlib.generalValueMatrix_obj.get_all()
+nutritionValuesMatrix = Configlib.nutritionValuesMatrix_obj.get_all()
 
 def SensorValue_Checker(tag, sensorValue, week):
 
@@ -109,8 +109,8 @@ def GetDataBaseString():
     return universalDataString + "\n" + WeeklyDataString
 
 if __name__ == "__main__":
-    #SensorValue_Checker('PH', 5.8, 1)
-    #SensorValue_Checker('EC', 1.8, 1)
+    SensorValue_Checker('PH', 5.8, 1)
+    SensorValue_Checker('EC', 1.8, 1)
 
     #restult = RunValueChacker(1, 5.8, 3, 25, 25, 600, 20, 10)
     #print(restult)
