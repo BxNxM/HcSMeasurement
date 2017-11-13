@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 try:
     # IMPORT MODULS
@@ -18,7 +19,7 @@ try:
     sys.path.append(myfolder + "/..")
     from Calculate_Manager import *
 except Exception as e:
-    print("IMPORT EXCEPTON!!!" + str(e))
+    print("IMPORT EXCEPTON!!! " + str(__name__) + "\n" +  str(e))
 
 '''
 Elemets by id
@@ -253,7 +254,7 @@ class ValueElement(FrameManager):
 
     def DataBaseMonitor(self):
         try:
-            DataBaseSize = os.popen("du -h DataBase | awk '{ print $1 }'").read().splitlines()
+            DataBaseSize = os.popen("du -h " + str(myfolder) + "/../DataBase | awk '{ print $1 }'").read().splitlines()
             self.ChangeValue(DataBaseSize[0])
             self.label.after(1000, self.DataBaseMonitor)
         except Exception as e:

@@ -1,14 +1,16 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 try:
     # IMPORT MODULS
     # default moduls
     import sys
+    import os
     # custom moduls
     myfolder = os.path.dirname(os.path.abspath(__file__))
     sys.path.append(myfolder)
     import Loggerlib as Loggerlib
 except Exception as e:
-    print("IMPORT EXCEPTION!!!" + str(e))
+    print("IMPORT EXCEPTION!!!" + str(__name__) + "\n" + str(e))
 
 generalValueMatrix = {   'PH' : { ('value'): 5.8, ('+/-'): 0.1, ('dim'): '-' },\
                          'EC' : { ('value'): 1.8, ('+/-'): 0.1, ('dim'): 'mS/cm' },\

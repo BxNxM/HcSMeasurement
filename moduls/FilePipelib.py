@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 try:
     # IMPORT MODULES
@@ -12,7 +13,7 @@ try:
     source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     pipePath = source_dirname + '/DataBase/ConsolePipe'
 except Exception as w:
-    print("IMPORT EXCEPTION!!! " + str(e))
+    print("IMPORT EXCEPTION!!! " + str(__name__) + "\n" + str(e))
 
 class FilePipe():
     """ This is a simple communications between running python programs """

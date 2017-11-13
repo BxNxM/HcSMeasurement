@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 try:
     # IMPORT MODULS
@@ -11,7 +12,7 @@ try:
     import DATAlib as dlib
     import Loggerlib as Loggerlib
 except Exception as e:
-    print("IMPORT EXCEPTION!!! " + str(e))
+    print("IMPORT EXCEPTION!!! " + str(__name__) + "\n" + str(e))
 
 class RunTimerClass():
 

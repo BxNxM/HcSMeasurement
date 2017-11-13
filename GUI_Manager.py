@@ -1,12 +1,19 @@
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 
-from moduls.GUIlib import *
-import moduls.GUIlib as GUIlib
-from moduls.DATAlib import *
-import  moduls.DATAlib as Dlib
-from moduls.FilePipelib import *
-import moduls.FilePipelib as fPipe
-import moduls.Loggerlib
+# IMPORT MODULS
+# default moduls
+import sys
+import os
+# custom moduls
+myfolder = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(str(myfolder) + "/moduls")
+from GUIlib import *
+import GUIlib as GUIlib
+from DATAlib import *
+import  DATAlib as Dlib
+from FilePipelib import *
+import FilePipelib as fPipe
+import Loggerlib
 
 # init global variables for this file
 dataFileList = 0

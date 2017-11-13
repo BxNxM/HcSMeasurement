@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3q
 try:
     # IMPORT MODULS
@@ -11,7 +12,7 @@ try:
     sys.path.append(myfolder)
     import Loggerlib
 except Exception as e:
-    print("IMPORT EXCEPTION!!! " + str(e))
+    print("IMPORT EXCEPTION!!! " + str(__name__) + "\n" + str(e))
 
 # get source path parent's folder parent's folder
 source_dirname = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

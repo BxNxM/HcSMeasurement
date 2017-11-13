@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 try:
     # IMPORT MODULS
@@ -8,7 +9,7 @@ try:
     # custom moduls
     myfolder = os.path.dirname(os.path.abspath(__file__))
 except Exception as e:
-    print("IMPORT EXCEPTION!!! " + str(e))
+    print("IMPORT EXCEPTION!!! " + str(__name__) + "\n" + str(e))
 
 class LogHandler():
     __instance = None
