@@ -49,6 +49,21 @@ from pycallgraph import PyCallGraph
 from pycallgraph.output import GraphvizOutput
     import GUI_Manager
 --------------------------------------------------------------------------------
+LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/pyAnalizer.py
+--------------------------------------------------------------------------------
+import os
+class AnalizeStructure():
+    def __init__(self, root_folder, outputpath="pyoutput.txt"):
+    def get_structure(self, ftype, fnotype):
+    def get_relevant_files_structure(self):
+    def echo_structure(self):
+    def get_relevant_file_content(self):
+    def analize_file(self, content, findobj=["import ", "class ", "def "]):
+    def analize_file(self, content, findobj=["import ", "class ", "def "]):
+    def analize_file(self, content, findobj=["import ", "class ", "def "]):
+    def read_file(self, path):
+    def write_to_file(self, content):
+--------------------------------------------------------------------------------
 LAYER	1	/Users/bnm/PycharmProjects/HcSMeasurement/visualize/DATA_Manager_visualizer.py
 --------------------------------------------------------------------------------
 import sys
@@ -96,6 +111,21 @@ LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/Loggerlib.py
     import sys
 class LogHandler():
     def __new__(cls, title="title", logpath="logfile.log", log_limit_Mb=300):
+--------------------------------------------------------------------------------
+LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/Configlib.py
+--------------------------------------------------------------------------------
+    import json
+    import os
+    import sys
+    import Loggerlib
+class ConfigHandler():
+    def __init__(self, cfg_path):
+    def get(self, key):
+    def get_all(self):
+    def put(self, key, value):
+    def write_cfg_file(self, dictionary):
+    def read_cfg_file(self):
+def test_json_dict_convert():
 --------------------------------------------------------------------------------
 LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/DATAlib.py
 --------------------------------------------------------------------------------
@@ -184,6 +214,7 @@ LAYER	2	/Users/bnm/PycharmProjects/HcSMeasurement/moduls/CALCULATElib.py
     import sys
     import os
     import Loggerlib as Loggerlib
+    import Configlib
 def SensorValue_Checker(tag, sensorValue, week):
 def CalculateByTag(tag, week, mode):
 def GetOptimalValue(tag, week):
@@ -191,6 +222,6 @@ def RunValueChacker(week, mPH, mEC, mwTemp, maTemp, mlight, mhum, mwaterlvl):
 def WeeklyProcess(week):
 def GetDataBaseString():
 
-Generated lines: 192 pcs
-Analized files: 13 pcs
+Generated lines: 223 pcs
+Analized files: 15 pcs
 Project forders: 3 pcs
