@@ -1,5 +1,19 @@
 #!/bin/bash
 
+BLACK='\033[0;30m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BROWN='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+LIGHT_GRAY='\033[0;37m'
+DARK_GRAY='\033[1;30m'
+LIGHT_RED='\033[1;31m'
+LIGHT_GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+LIGHT_PURPLE='\033[1;35m'
+WHITE='\033[1;37m'
+NC='\033[0m'
 #================================================= ARG PARSER =====================================================
 # get arg list pcs
 args_pcs=$#
@@ -131,6 +145,7 @@ function get_arg_value() {
 
 # ---------------------- MAN PAGE --------------------#
 function man() {
+    echo -e "${YELLOW}============== HcS MEASURE ==============${NC}"
     if [ "$(get_arg_status "man")" -eq 1 ]
     then
         for manpage in "${man_for_args[@]}"
@@ -387,10 +402,39 @@ function lmess() {
     done
 }
 
+function validate_project_structure() {
+    files_path=("${myPath}/moduls" "${myPath}/config" "${myPath}/systemCache" "${myPath}/DataBase")
+    for file in ${files_path[@]}
+    do
+        if [ ! -e "$file" ]
+        then
+            echo -e "[ !!! ] $file not exists\n create"
+            mkdir "$file"
+        fi
+    done
+}
+
+function logo() {
+
+    logo_='                              (_)(_)
+                             /     \
+                            /       |
+                           /   \  * |
+             ________     /    /\__/
+     _      /        \   /    /
+    / \    /  ____    \_/    /
+   //\ \  /  /    \         /
+   V  \ \/  /      \       /
+       \___/        \_____/'
+    echo -e "${GREEN}${logo_}${NC}"
+}
+
 #========================= LOUNCH OPTION ==================================#
 function RunOption {
 
+    logo
     argParseRun
+    validate_project_structure
     if [ "$args_pcs" -eq 0 ]
     then
         echo -e "No input argument! for more info use: ${SOURCEPATH}/${SOURCE_NAME} --man"
