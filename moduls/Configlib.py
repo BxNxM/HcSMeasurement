@@ -42,7 +42,7 @@ class ConfigHandler():
             with open(self.cfg_path, 'w') as f:
                 json.dump(dictionary, f, sort_keys=True, indent=2)
         except Exception as e:
-            Loggerlib.GuiLog.logger.critical("ConfigHandler.write_cfg_file write json: " + str(e))
+            Loggerlib.DataLog.logger.critical("ConfigHandler.write_cfg_file write json: " + str(e))
 
     def read_cfg_file(self):
         try:
