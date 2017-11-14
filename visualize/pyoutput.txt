@@ -3,6 +3,16 @@ LAYER	0	/Users/bnm/PycharmProjects/HcSMeasurement//DATA_Manager.py
 --------------------------------------------------------------------------------
 from moduls.DATAlib import *
 import moduls.DATAlib as Dlib
+import moduls.Loggerlib as Loggerlib
+def Watertemp_read():
+def Airtemp_read():
+def Humidity_read():
+def PH_read():
+def EC_read():
+def Light_read():
+def Waterlvl_read():
+def DataBaseSize_read():
+def debug_print(text, state=False):
 def Refresh_dataBase():
 def main():
 --------------------------------------------------------------------------------
@@ -222,6 +232,6 @@ def RunValueChacker(week, mPH, mEC, mwTemp, maTemp, mlight, mhum, mwaterlvl):
 def WeeklyProcess(week):
 def GetDataBaseString():
 
-Generated lines: 223 pcs
+Generated lines: 233 pcs
 Analized files: 15 pcs
 Project forders: 3 pcs
