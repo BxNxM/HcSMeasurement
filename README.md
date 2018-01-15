@@ -1,4 +1,12 @@
 # HcSMeasurement
+Measure system for hydrophonic growing systems. Collect and visualize data with smart data monitoring.
+
+Main Window
+![main_window](https://github.com/BxNxM/HcSMeasurement/blob/master/demo_images/HcSmainScreen.png?raw=true)
+
+Settings Window
+![settings_window](https://github.com/BxNxM/HcSMeasurement/blob/master/demo_images/HcSsettingsScreen.png?raw=true)
+
 
 * install python3
 
