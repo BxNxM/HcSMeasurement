@@ -44,14 +44,14 @@ cd ~/Desktop/HcSMeasurement
 ~/Desktop/HcSMeasurement/moduls/DATA_Manager.py
 ```
 
-* set Database in
+* set Reference Database for sensor data monitoring in
 
 ```
 ~/Desktop/HcSMeasurement/config/generalValue.json
 ~/Desktop/HcSMeasurement/config/nutritionValues.json
 ```
 
-* sensors color indexing code modification in
+* sensors color indexing code modification possible in
 
 ```
 ~/Desktop/HcSMeasurement/moduls/GUIlib.py
